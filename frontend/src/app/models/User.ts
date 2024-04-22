@@ -1,6 +1,6 @@
 import Company from "./Company";
 import Team from "./Team";
-import Profile from "./profile";
+import Profile from "./Profile";
 
 export default interface User {
   id: number;

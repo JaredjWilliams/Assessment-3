@@ -17,6 +17,7 @@ import { CreateProjectComponent } from './overlays/create-project/create-project
 import { EditProjectComponent } from './overlays/edit-project/edit-project.component';
 import { AddUserComponent } from './overlays/add-user/add-user.component';
 import { DropDownComponent } from './utility-views/drop-down/drop-down.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DropDownComponent } from './utility-views/drop-down/drop-down.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

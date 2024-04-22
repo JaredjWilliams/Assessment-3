@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css);/* You can add global styles to this file, and also import other style files */
+
+
+:root {
+  --primary-background: #051622;
+  --heading-color: #1BA098;
+}
+
+.primary-background {
+  background-color: var(--primary-background);
+}
+
+.heading-color {
+  color: var(--heading-color);
+}
+
+.onHover:hover {
+  opacity: 50%;
+  cursor: pointer;
+}
+
+.onHover {
+  transition: 0.25s;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+

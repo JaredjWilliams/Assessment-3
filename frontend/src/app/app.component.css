@@ -1,0 +1,5 @@
+.body {
+  height: 100vh;
+  padding-top: 60px;
+  background-color: var(--primary-background);
+}

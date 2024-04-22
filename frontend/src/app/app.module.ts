@@ -18,6 +18,7 @@ import { EditProjectComponent } from './overlays/edit-project/edit-project.compo
 import { AddUserComponent } from './overlays/add-user/add-user.component';
 import { DropDownComponent } from './utility-views/drop-down/drop-down.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { TextInputComponent } from './utility-views/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     CreateProjectComponent,
     EditProjectComponent,
     AddUserComponent,
-    DropDownComponent
+    DropDownComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,6 @@ import { UserRegistryComponent } from './user-registry/user-registry.component';
 import { HeaderComponent } from './header/header.component';
 import { CreateAnnouncementComponent } from './overlays/create-announcement/create-announcement.component';
 import { CreateTeamComponent } from './overlays/create-team/create-team.component';
-import { CreateProjectsComponent } from './overlays/create-projects/create-projects.component';
 import { CreateProjectComponent } from './overlays/create-project/create-project.component';
 import { EditProjectComponent } from './overlays/edit-project/edit-project.component';
 import { AddUserComponent } from './overlays/add-user/add-user.component';
@@ -30,7 +29,6 @@ import { DropDownComponent } from './utility-views/drop-down/drop-down.component
     HeaderComponent,
     CreateAnnouncementComponent,
     CreateTeamComponent,
-    CreateProjectsComponent,
     CreateProjectComponent,
     EditProjectComponent,
     AddUserComponent,

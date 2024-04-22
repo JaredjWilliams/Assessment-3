@@ -27,4 +27,14 @@
   cursor: pointer;
 }
 
+.visualizer {
+  border: 1px solid white;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 

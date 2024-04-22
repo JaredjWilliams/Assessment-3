@@ -1,5 +1,24 @@
-<div>
-    <app-text-input placeholder="email"></app-text-input>
-    <app-text-input placeholder="password"></app-text-input>
-    <button>Submit</button>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="">
+    <h1 class="heading-color text-center">COOK SYSTEMS</h1>
+    <h2 class="heading-color text-center">A FINAL APP</h2>
+  </div>
+  <div class="login-border d-flex flex-column mt-5">
+    <div class="circle-background center">
+      <img src="assets/logo_big.png" alt="logo" class="logo">
+    </div>
+    <div class="center p-3 flex-column">
+      <input class="login-input" type="text" placeholder="email" [ngModel]="username">
+      <img src="assets/white_line.png" alt="user" class="icon">
+    </div>
+    <div class="center p-3 flex-column">
+      <input class="login-input" type="text"  placeholder="password" [ngModel]="username">
+      <img src="assets/white_line.png" alt="user" class="icon">
+    </div>
+    <div class="center p-3">
+      <button class="login-button">LOGIN</button>
+  </div>
 </div>
+</div>
+
+

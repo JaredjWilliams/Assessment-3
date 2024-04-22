@@ -46,7 +46,6 @@ export const mockCompany : Company = {
 }
 
 export const mockCredentials : Credentials = {
-  password: "testing",
-  username: "password"
-
+  "username": "cousingreg",
+  "password": "mosteligiblebachelor"
 }

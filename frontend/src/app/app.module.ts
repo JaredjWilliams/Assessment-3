@@ -17,7 +17,7 @@ import { CreateProjectComponent } from './overlays/create-project/create-project
 import { EditProjectComponent } from './overlays/edit-project/edit-project.component';
 import { AddUserComponent } from './overlays/add-user/add-user.component';
 import { DropDownComponent } from './utility-views/drop-down/drop-down.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import { TextInputComponent } from './utility-views/text-input/text-input.component';
 import {FormsModule} from "@angular/forms";
 

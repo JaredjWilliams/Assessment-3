@@ -3,6 +3,7 @@ import UserInfo from "../../models/UserInfo";
 import Team from "../../models/Team";
 import Company from "../../models/Company";
 import User from "../../models/User";
+import Credentials from "../../models/Credentials";
 
 export const mockProfile: Profile = {
   email: "Testing@gmail.com",
@@ -42,4 +43,10 @@ export const mockCompany : Company = {
   name: "Company 1",
   teams: [mockTeams],
   employees: [mockUser]
+}
+
+export const mockCredentials : Credentials = {
+  password: "testing",
+  username: "password"
+
 }

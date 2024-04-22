@@ -1,5 +1,11 @@
-<app-header></app-header>
+
+<ng-container *ngIf="isAuthenticated">
+  <app-header></app-header>
+</ng-container>
+
 
 <div class="body">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
+
+

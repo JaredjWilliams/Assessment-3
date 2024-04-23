@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { authReducer } from './auth/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/auth.effects';
+import { TeamCardComponent } from './utility-views/team-card/team-card.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthEffects } from './auth/auth.effects';
     AddUserComponent,
     DropDownComponent,
     TextInputComponent,
-    AnnouncementCardComponent
+    AnnouncementCardComponent,
+    TeamCardComponent
   ],
   imports: [
     BrowserModule,

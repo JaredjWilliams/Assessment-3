@@ -1,5 +1,5 @@
 <div>
-    <select #dropdown name="items" id="items" (change)="submit(dropdown.value)" class="drop-down">
+    <select #dropdown name="items" id="items" (change)="onChangeFunc(dropdown.value)" class="drop-down">
         <option value="" disabled selected hidden>Pick an option</option>
         <option class="option" *ngFor="let item of items" [value]="item">{{item}}</option>
     </select>

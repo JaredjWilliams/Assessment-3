@@ -16,5 +16,5 @@ export class AuthService {
       password
     }
     return this.http.post(`${baseUrl}/users/login`, request);
-  }  // TODO : Tailor for return values
+  }
 }

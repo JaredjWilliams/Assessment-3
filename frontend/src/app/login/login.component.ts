@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth/service';
 import { Store } from '@ngrx/store';
-import { AuthState } from '../auth/reducer';
+import { AuthState } from '../auth/auth.reducer';
+import { loginRequest } from '../auth/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,6 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private store: Store<AuthState>
   ) {
     this.loginForm = this.formBuilder.group({
@@ -25,16 +24,18 @@ export class LoginComponent {
 
   signIn() {
     if (this.loginForm.valid) {
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
-      this.authService.login(username, password).subscribe(
-        (user: any) => {
-          console.log(`Successful login: ${user}`);
-        },
-        (error: any) => {
-          console.log(`Login Error : ${error}`);
-        }
-      );
+      const username:string = this.loginForm.value.username;
+      const password:string = this.loginForm.value.password;
+      const creds = {username, password};
+      this.store.dispatch(loginRequest({creds}))
+      // this.authService.login(username, password).subscribe(
+      //   (user: any) => {
+      //     console.log(`Successful login: ${user}`);
+      //   },
+      //   (error: any) => {
+      //     console.log(`Login Error : ${error}`);
+      //   }
+      // );
     }
   }
 }

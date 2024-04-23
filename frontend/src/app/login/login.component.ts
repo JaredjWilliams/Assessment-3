@@ -1,31 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../services/login/login.service";
-
-export const AUTHENTICATED_USER = 'authenticatedUser'
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth/service';
+import { Store } from '@ngrx/store';
+import { AuthState } from '../auth/reducer';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  loginForm: FormGroup;
 
   constructor(
-    private service: LoginService
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private store: Store<AuthState>
   ) {
-  }
-
-  getUser() {
-    this.service.getUser().subscribe((data) => {
-      sessionStorage.setItem(AUTHENTICATED_USER, data.profile.firstName);
-      console.log(data);
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required], 
+      password: ['', [Validators.required, Validators.minLength(6)]] 
     });
   }
 
-  ngOnInit(): void {
-    this.getUser()
+  signIn() {
+    if (this.loginForm.valid) {
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
+      this.authService.login(username, password).subscribe(
+        (user: any) => {
+          console.log(`Successful login: ${user}`);
+        },
+        (error: any) => {
+          console.log(`Login Error : ${error}`);
+        }
+      );
+    }
   }
-
-
-
 }

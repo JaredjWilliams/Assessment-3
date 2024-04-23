@@ -5,7 +5,7 @@
         <h1 class="text-center ml-5">{{firstName}}, {{lastName}}</h1>
       </div>
       <div >
-        <img src="./assets/exit.png">
+        <img src="./assets/exit.png" alt="" class="onHover" (click)="exit()">
       </div>
     </div>
     <div>
@@ -34,7 +34,7 @@
 
 
   <div>
-    <button class="project-button m-3" (click)="submit()">Submit</button>
+    <button class="project-button m-3 onHover" (click)="submit()">Submit</button>
   </div>
 
 

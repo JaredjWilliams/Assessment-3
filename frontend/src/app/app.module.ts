@@ -20,6 +20,9 @@ import { DropDownComponent } from './utility-views/drop-down/drop-down.component
 import {HttpClientModule} from "@angular/common/http";
 import { TextInputComponent } from './utility-views/text-input/text-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { authReducer } from './auth/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/auth.effects';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({auth: authReducer}),
+    EffectsModule.forRoot([AuthEffects]),
     ReactiveFormsModule,
     HttpClientModule
   ],

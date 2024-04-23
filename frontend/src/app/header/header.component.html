@@ -1,9 +1,10 @@
+
 <header class="header">
   <nav class="navbar navbar-expand-md navbar-dark primary-background">
     <div class="navbar-brand" routerLink="">
       <img src="assets/logo.png" alt="logo" class="logo cursor-pointer">
     </div>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" *ngIf="isAdmin$ | async">
       <li class="acting-as-admin p-2">ACTING AS ADMIN</li>
     </ul>
 

@@ -10,12 +10,6 @@ import { CompanyService } from 'src/app/services/company/company.service';
 export class DropDownComponent {
 
   @Input() items: string[] = [];
-
-  constructor (private router: Router, private companyService: CompanyService) {}
-
-  submit(selectedItem: string) {
-    this.companyService.setSelectedCompany(selectedItem)
-    this.router.navigate([''])
-  }
+  @Input() onChangeFunc: Function = () => {}
 }
 

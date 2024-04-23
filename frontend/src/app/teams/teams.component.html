@@ -1,4 +1,4 @@
-<p>teams works!</p>
-<ul>
-  <li *ngFor="let team of teams$ | async"  (click)="showProjects(team)">{{ team.name }} {{team.description}}  | {{team.teammates.length}} members</li>
-</ul>
+<div>
+    <p>Teams</p>
+    <app-team-card [id]="1" [numProjects]="2"></app-team-card>
+</div>

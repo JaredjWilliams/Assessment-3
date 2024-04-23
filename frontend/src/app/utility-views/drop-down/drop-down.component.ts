@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { CompanyService } from 'src/app/services/company/company.service';
 
 @Component({
   selector: 'app-drop-down',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class DropDownComponent {
 
+  @Input() items: string[] = [];
+
+  constructor (private router: Router, private companyService: CompanyService) {}
+
+  submit(selectedItem: string) {
+    this.companyService.setSelectedCompany(selectedItem)
+    this.router.navigate([''])
+  }
 }
+

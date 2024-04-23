@@ -1,5 +1,5 @@
-import { Action, State, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
-import { loginFailure, loginSuccess } from './auth.actions';
+import { Action, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { loginFailure, loginSuccess, logout } from './auth.actions';
 
 export interface AuthState {
   loggedIn: boolean;
@@ -31,6 +31,14 @@ const _authReducer = createReducer(
       error: loginFailureResp,
     };
   }), 
+  on(logout, state => {
+    return {
+      ...state,
+      loggedIn: false,
+      user: null,
+      error: null
+    };
+  })
 )
 
 export function authReducer(state: AuthState | undefined, action: Action) {

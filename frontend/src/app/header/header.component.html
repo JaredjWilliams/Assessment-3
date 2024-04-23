@@ -8,12 +8,15 @@
       <li class="acting-as-admin p-2">ACTING AS ADMIN</li>
     </ul>
 
-    <ul class="navbar-nav navbar-collapse justify-content-end">
+    <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="loggedIn$ | async">
       <li class="heading-color p-2 onHover" routerLink="">Home</li>
       <li class="heading-color p-2 onHover" routerLink="/company">Company</li>
       <li class="heading-color p-2 onHover" routerLink="/teams">Teams</li>
       <li class="heading-color p-2 onHover" routerLink="users">Users</li>
-      <li class="heading-color p-2 onHover" routerLink="/logout">Logout</li>
+      <li class="heading-color p-2 onHover" (click)="doLogout()" routerLink="/login">Logout</li>
+    </ul>
+    <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="!(loggedIn$ | async)">
+      <li class="heading-color p-2 onHover" routerLink="/login">Log In</li>
     </ul>
 
   </nav>

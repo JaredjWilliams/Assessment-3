@@ -5,7 +5,7 @@
     </div>
     <ng-container *ngIf="isAdmin$ | async">
       <div class="button-container pb-3 mr-5">
-        <button class="btn btn-primary new-button">New</button>
+        <button class="btn btn-primary new-button" (click)="openDialog()">New</button>
       </div>
     </ng-container>
   </div>

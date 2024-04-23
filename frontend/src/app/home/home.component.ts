@@ -4,6 +4,8 @@ import {Store} from "@ngrx/store";
 import {selectIsAdmin} from "../auth/auth.reducer";
 import Announcement from "../models/Announcement";
 import {loremIpsum, mockUserInfo} from "../utils/mocks/mockData";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {CreateAnnouncementComponent} from "../overlays/create-announcement/create-announcement.component";
 
 @Component({
   selector: 'app-home',
@@ -13,6 +15,7 @@ import {loremIpsum, mockUserInfo} from "../utils/mocks/mockData";
 export class HomeComponent implements OnInit {
 
   isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
+  user$ = this.store.select(fromAuth.selectUser);
 
   announcements: Announcement[] = [
     {
@@ -40,11 +43,20 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    private store: Store<fromAuth.AuthState>
+    private store: Store<fromAuth.AuthState>,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
 
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.user$;
+    dialogConfig.width = '490px';
+    dialogConfig.height = '440px';
+    this.matDialog.open(CreateAnnouncementComponent, dialogConfig);
   }
 
 

@@ -1,5 +1,5 @@
 @import url(https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css);/* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
   --primary-background: #051622;
@@ -15,6 +15,18 @@
 
 .heading-color {
   color: var(--heading-color);
+}
+
+.border-color {
+  border-color: var(--border-color);
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--primary-background);
+  height: 100%;
 }
 
 .onHover:hover {
@@ -51,5 +63,27 @@ html {
 .white-color {
   color: var(--white-color);
 }
+
+.project-input{
+  background-color: var(--primary-background);
+  color: var(--heading-color);
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  outline: none;
+}
+
+.project-button {
+    background-color: var(--heading-color);
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 35px;
+    outline: none;
+  margin-top: auto;
+}
+
 
 

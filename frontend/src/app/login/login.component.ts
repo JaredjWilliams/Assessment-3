@@ -29,4 +29,8 @@ export class LoginComponent {
     }
 
 
+  autofill() {
+    this.email = "thisismycompany";
+    this.password = "getyourowncompany";
+  }
 }

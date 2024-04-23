@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthEffects {
   loginRequest$ = createEffect(() => this.actions$.pipe(
     ofType(loginRequest),
-    exhaustMap((action) => 
+    exhaustMap((action) =>
       this.authService
         .login(action.creds.username, action.creds.password)
         .pipe(
@@ -23,11 +23,16 @@ export class AuthEffects {
   ));
 
   loginSuccess$ = createEffect(
-    () => 
+    () =>
       this.actions$.pipe(
         ofType(loginSuccess),
         tap(({ loginSuccessResp }) => {
-          this.router.navigateByUrl('/');
+          if (loginSuccessResp.admin) {
+            this.router.navigateByUrl('/company');
+          } else {
+            this.router.navigateByUrl('/');
+          }
+
           alert(
             'Login Success'
           );

@@ -19,6 +19,7 @@ import { AddUserComponent } from './overlays/add-user/add-user.component';
 import { DropDownComponent } from './utility-views/drop-down/drop-down.component';
 import {HttpClientModule} from "@angular/common/http";
 import { TextInputComponent } from './utility-views/text-input/text-input.component';
+import { AnnouncementCardComponent } from './utility-views/announcement-card/announcement-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditProjectComponent,
     AddUserComponent,
     DropDownComponent,
-    TextInputComponent
+    TextInputComponent,
+    AnnouncementCardComponent
   ],
   imports: [
     BrowserModule,

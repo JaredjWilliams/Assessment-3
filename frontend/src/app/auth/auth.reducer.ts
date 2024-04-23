@@ -5,12 +5,14 @@ export interface AuthState {
   loggedIn: boolean;
   user: any;
   error: any;
+  displayNavBar: true;
 }
 
 export const initialState: AuthState = {
   loggedIn: false,
   user: null,
   error: null,
+  displayNavBar: true
 };
 
 const _authReducer = createReducer(
@@ -38,7 +40,7 @@ const _authReducer = createReducer(
       user: null,
       error: null
     };
-  })
+  }),
 )
 
 export function authReducer(state: AuthState | undefined, action: Action) {
@@ -52,3 +54,7 @@ export const selectLoggedIn = createSelector(selectAuthState, s => s.loggedIn);
 export const selectUser = createSelector( selectAuthState, s => s.user);
 
 export const selectIsAdmin = createSelector( selectAuthState, s => s.user && s.user.admin);
+
+export const selectTeams = createSelector( selectAuthState, s => s.user.teams);
+
+export const selectFirstLast = createSelector( selectAuthState, s => s.user.profile.firstName + ' ' + s.user.profile.lastName.charAt(0) + '.');

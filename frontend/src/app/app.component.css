@@ -1,7 +1,5 @@
 .body {
-  height: 100vh;
+  height: 100%;
   padding-top: 60px;
   background-color: var(--primary-background);
 }
-
-

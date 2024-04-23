@@ -4,6 +4,9 @@
 :root {
   --primary-background: #051622;
   --heading-color: #1BA098;
+  --border-color: #DEB992;
+  --white-color: #FFFFFF;
+  --secondary-background: #0B2D45;
 }
 
 .primary-background {
@@ -39,6 +42,14 @@
 
 html {
   background-color: var(--primary-background);
+}
+
+.border-bottom {
+  border-bottom: 2px solid #DEB992;
+}
+
+.white-color {
+  color: var(--white-color);
 }
 
 

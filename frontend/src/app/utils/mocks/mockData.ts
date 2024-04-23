@@ -49,3 +49,5 @@ export const mockCredentials : Credentials = {
   "username": "cousingreg",
   "password": "mosteligiblebachelor"
 }
+
+export const loremIpsum = "Lorem ipsum our announcements go here! Our business has been going great and we are going to announce the winners of employee of the month! Lorem ipsum Lorem ipsum our announcements go here! Our business has been going great and we are going to announce the winners of employee of the month! Lorem ipsum  Lorem ipsum our announcements go here! Our business has been going great and we are going to announce the winners of employee of the month! Lorem ipsum "

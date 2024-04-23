@@ -41,12 +41,6 @@ const _authReducer = createReducer(
       error: null
     };
   }),
-  // on(logout, state => {
-  //   return {
-  //     ...state,
-  //     displayNavBar: false
-  //   };
-  // }),
 )
 
 export function authReducer(state: AuthState | undefined, action: Action) {

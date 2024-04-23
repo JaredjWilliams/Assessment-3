@@ -37,4 +37,8 @@
   align-items: center;
 }
 
+html {
+  background-color: var(--primary-background);
+}
+
 

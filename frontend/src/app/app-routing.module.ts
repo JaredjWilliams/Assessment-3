@@ -10,14 +10,14 @@ import {UserRegistryComponent} from "./user-registry/user-registry.component";
 
 const routes: Routes = [
 
-  { path: "", component: HomeComponent },
+  { path: "", component: HomeComponent, canActivate: [RouterGuardService]},
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [RouterGuardService] },
   { path: 'projects', component: ProjectsComponent, canActivate: [RouterGuardService] },
   { path: 'company', component: SelectCompanyComponent, canActivate: [RouterGuardService] },
   { path: 'teams', component: TeamsComponent, canActivate: [RouterGuardService] },
   { path: 'user-registry', component: UserRegistryComponent, canActivate: [RouterGuardService] },
-  
+
 ];
 
 @NgModule({

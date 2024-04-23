@@ -6,6 +6,8 @@ import Team from "../../models/Team";
 import User from "../../models/User";
 import {Projects} from "@angular/cli/lib/config/workspace-schema";
 
+export const SELECTED_COMPANY = 'selectedCompany'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,14 @@ export class CompanyService {
   constructor(
     private http : HttpClient
   ) { }
+
+  getSelectedCompany() {
+    return localStorage.getItem(SELECTED_COMPANY)
+  }
+
+  setSelectedCompany(companyName: string) {
+    localStorage.setItem(SELECTED_COMPANY, companyName)
+  }
 
   getCompanies() {
     return this.http.get<[Company]>("http://localhost:8080/companies")

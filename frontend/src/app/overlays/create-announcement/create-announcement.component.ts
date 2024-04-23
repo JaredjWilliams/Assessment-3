@@ -27,6 +27,12 @@ export class CreateAnnouncementComponent implements OnInit {
 
 
   submit() {
+    this.dialogRef.close({
 
+    });
+  }
+
+  exit() {
+    this.dialogRef.close();
   }
 }

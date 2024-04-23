@@ -17,6 +17,10 @@ export class CompanyService {
     private http : HttpClient
   ) { }
 
+  getSelectedCompany() {
+    return localStorage.getItem(SELECTED_COMPANY)
+  }
+
   getCompanies() {
     return this.http.get<[Company]>("http://localhost:8080/companies")
   }

@@ -1,1 +1,4 @@
 <p>teams works!</p>
+<ul>
+  <li *ngFor="let team of teams$ | async"  (click)="showProjects(team)">{{ team.name }} {{team.description}}  | {{team.teammates.length}} members</li>
+</ul>

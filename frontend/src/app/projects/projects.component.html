@@ -1,1 +1,11 @@
+<p (click)="goBack()">< back</p>
 <p>projects works!</p>
+<div>
+  <h2>Projects for {{ team.name }}</h2>
+  <ul>
+    <li *ngFor="let project of projects">
+      {{ project.name }} - {{ project.description }} - {{project.active}}
+    </li>
+  </ul>
+</div>
+

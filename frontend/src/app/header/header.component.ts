@@ -14,6 +14,7 @@ export class HeaderComponent {
   loggedIn$ = this.store.select(fromAuth.selectLoggedIn);
   user$ = this.store.select(fromAuth.selectUser);
   isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
+  firstLast$ = this.store.select(fromAuth.selectFirstLast);
   
   constructor(
     private companyService: CompanyService,

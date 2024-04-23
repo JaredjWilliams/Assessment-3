@@ -7,12 +7,15 @@
       <ul class="navbar-nav" *ngIf="isAdmin$ | async">
         <li class="acting-as-admin p-2">ACTING AS ADMIN</li>
       </ul>
+      <ul class="navbar-nav" *ngIf="!(isAdmin$ | async) && (loggedIn$ | async)">
+        <li class="acting-as-admin p-2">{{(firstLast$ | async)}}</li>
+      </ul>
 
       <ul class="navbar-nav navbar-collapse justify-content-end" >
         <li class="heading-color p-2 onHover" routerLink="">Home</li>
-        <li class="heading-color p-2 onHover" routerLink="/company">Company</li>
+        <li class="heading-color p-2 onHover" *ngIf="isAdmin$ | async" routerLink="/company">Company</li>
         <li class="heading-color p-2 onHover" routerLink="/teams">Teams</li>
-        <li class="heading-color p-2 onHover" routerLink="users">Users</li>
+        <li class="heading-color p-2 onHover" *ngIf="isAdmin$ | async" routerLink="users">Users</li>
         <li class="heading-color p-2 onHover" (click)="doLogout()" routerLink="/login">Logout</li>
       </ul>
       <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="!(loggedIn$ | async)">

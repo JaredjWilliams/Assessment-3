@@ -43,7 +43,7 @@ import { AuthEffects } from './auth/auth.effects';
     AddUserComponent,
     DropDownComponent,
     TextInputComponent,
-    AnnouncementCardComponent,
+    AnnouncementCardComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,10 @@ export class CompanyService {
     return localStorage.getItem(SELECTED_COMPANY)
   }
 
+  setSelectedCompany(companyName: string) {
+    localStorage.setItem(SELECTED_COMPANY, companyName)
+  }
+
   getCompanies() {
     return this.http.get<[Company]>("http://localhost:8080/companies")
   }

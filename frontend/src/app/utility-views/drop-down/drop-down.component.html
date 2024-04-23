@@ -1,1 +1,5 @@
-<p>drop-down works!</p>
+<div>
+    <select #dropdown name="items" id="items" (change)="submit(dropdown.value)">
+        <option *ngFor="let item of items" [value]="item">{{item}}</option>
+    </select>
+</div>

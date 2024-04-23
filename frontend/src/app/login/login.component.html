@@ -1,5 +1,16 @@
 <div>
-    <app-text-input placeholder="email"></app-text-input>
-    <app-text-input placeholder="password"></app-text-input>
-    <button>Submit</button>
+    <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+        <div>
+            <input class="username" type="text" name="username" placeholder="username" formControlName="username"/>
+            <!-- Add error message for username validation -->
+            <div *ngIf="loginForm.controls['username']?.errors?.['required']">Username is required</div>
+        </div>
+        <div>
+            <input class="password" type="password" name="password" placeholder="password" formControlName="password"/>
+            <!-- Add error message for password validation -->
+            <div *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required</div>
+            <div *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters</div>
+        </div>
+        <button class="login-btn" type="submit">LOGIN</button>
+    </form>
 </div>

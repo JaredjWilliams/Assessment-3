@@ -20,10 +20,11 @@ import { DropDownComponent } from './utility-views/drop-down/drop-down.component
 import {HttpClientModule} from "@angular/common/http";
 import { TextInputComponent } from './utility-views/text-input/text-input.component';
 import { AnnouncementCardComponent } from './utility-views/announcement-card/announcement-card.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { authReducer } from './auth/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/auth.effects';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AuthEffects } from './auth/auth.effects';
     StoreModule.forRoot({auth: authReducer}),
     EffectsModule.forRoot([AuthEffects]),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

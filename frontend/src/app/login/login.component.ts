@@ -1,32 +1,32 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../services/login/login.service";
-
-export const AUTHENTICATED_USER = 'authenticatedUser'
+import { Store } from '@ngrx/store';
+import { AuthState } from '../auth/auth.reducer';
+import { loginRequest } from '../auth/auth.actions';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+
+export class LoginComponent {
+
   email: string = ""
   password: string = ""
 
   constructor(
-    private service: LoginService
+    private store: Store<AuthState>
   ) {
+
   }
 
-  getUser() {
-    this.service.getUser().subscribe((data) => {
-      sessionStorage.setItem(AUTHENTICATED_USER, data.profile.firstName);
-      console.log(data);
-    });
-  }
-
-  ngOnInit(): void {
-    this.getUser()
-  }
+  signIn() {
+      const creds = {
+        username: this.email,
+        password: this.password
+      };
+      this.store.dispatch(loginRequest({creds}))
+    }
 
 
 }

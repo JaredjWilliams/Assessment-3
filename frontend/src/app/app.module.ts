@@ -19,7 +19,12 @@ import { AddUserComponent } from './overlays/add-user/add-user.component';
 import { DropDownComponent } from './utility-views/drop-down/drop-down.component';
 import {HttpClientModule} from "@angular/common/http";
 import { TextInputComponent } from './utility-views/text-input/text-input.component';
-import {FormsModule} from "@angular/forms";
+import { AnnouncementCardComponent } from './utility-views/announcement-card/announcement-card.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { authReducer } from './auth/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/auth.effects';
+
 
 @NgModule({
   declarations: [
@@ -37,12 +42,15 @@ import {FormsModule} from "@angular/forms";
     EditProjectComponent,
     AddUserComponent,
     DropDownComponent,
-    TextInputComponent
+    TextInputComponent,
+    AnnouncementCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({auth: authReducer}),
+    EffectsModule.forRoot([AuthEffects]),
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule
   ],

@@ -1,3 +1,4 @@
+
 <div class="d-flex flex-column justify-content-center align-items-center">
   <div class="">
     <h1 class="heading-color text-center">COOK SYSTEMS</h1>
@@ -8,17 +9,16 @@
       <img src="assets/logo_big.png" alt="logo" class="logo">
     </div>
     <div class="center p-3 flex-column">
-      <input class="login-input" type="text" placeholder="email" [ngModel]="email">
+      <input class="login-input" type="text" placeholder="email" [(ngModel)]="email">
       <img src="assets/white_line.png" alt="user" class="icon">
     </div>
     <div class="center p-3 flex-column">
-      <input class="login-input" type="password"  placeholder="password" [ngModel]="password">
+      <input class="login-input" type="password"  placeholder="password" [(ngModel)]="password">
       <img src="assets/white_line.png" alt="user" class="icon">
     </div>
     <div class="center p-3">
-      <button class="login-button">LOGIN</button>
+      <button class="login-button" (click)="signIn()">LOGIN</button>
   </div>
 </div>
 </div>
-
 

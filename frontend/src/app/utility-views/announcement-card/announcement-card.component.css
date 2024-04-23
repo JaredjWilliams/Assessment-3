@@ -1,0 +1,10 @@
+.announcement-container {
+  width: 788px;
+  background-color: var(--secondary-background);
+  border-radius: 10px;
+}
+
+.message-container {
+  padding: 25px 0 25px 25px;
+}
+

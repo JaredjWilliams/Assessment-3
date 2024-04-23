@@ -10,5 +10,6 @@ export class AnnouncementCardComponent {
   @Input() username: string = '';
   @Input() postedAt: string = '';
   @Input() message: string = '';
+  @Input() title: string = '';
 
 }

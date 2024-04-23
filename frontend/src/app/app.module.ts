@@ -25,6 +25,7 @@ import { authReducer } from './auth/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/auth.effects';
 import { TeamCardComponent } from './utility-views/team-card/team-card.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { TeamCardComponent } from './utility-views/team-card/team-card.component
     EffectsModule.forRoot([AuthEffects]),
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

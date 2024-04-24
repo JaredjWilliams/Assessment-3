@@ -89,6 +89,7 @@ export class ProjectsComponent implements OnInit {
       return this.onClose(result);
     })
   }
+
   onClose(result : {project: Project, isNew: boolean}) {
     if (result.isNew) {
       this.postProject(result.project);

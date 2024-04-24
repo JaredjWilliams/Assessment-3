@@ -5,7 +5,7 @@ import {mockCompany, mockCompany2, mockCredentials} from "../../utils/mocks/mock
 import Team from "../../models/Team";
 import User from "../../models/User";
 import {Projects} from "@angular/cli/lib/config/workspace-schema";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, map, takeUntil} from "rxjs";
 import { Store, select } from '@ngrx/store';
 import * as fromAuth from 'src/app/auth/auth.reducer';
 
@@ -23,7 +23,7 @@ export class CompanyService {
     private http : HttpClient
   ) {
     this.store.pipe(select(fromAuth.selectCompany)).subscribe(company => {
-      this.selectedCompany.next(company); 
+      this.selectedCompany.next(company);
     });
   }
 
@@ -36,7 +36,7 @@ export class CompanyService {
   }
 
   getTeamsFromCompany(id : number) {
-    return this.http.get<[Team]>(`http://localhost:8080/companies/${id}/teams`)
+    return this.http.get<[Team]>(`http://localhost:8080/company/${id}/teams`)
   }
 
   postTeamToCompany(id : number, team : Team, isAdmin : boolean) {

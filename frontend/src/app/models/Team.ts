@@ -4,5 +4,5 @@ export default interface Team {
   id: number;
   name: string;
   description: string;
-  teammates: UserInfo[]; 
+  teammates: UserInfo[];
 }

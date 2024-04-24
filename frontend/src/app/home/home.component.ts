@@ -65,7 +65,11 @@ export class HomeComponent implements OnInit {
     dialogConfig.data = this.user$;
     dialogConfig.width = '490px';
     dialogConfig.height = '440px';
-    this.matDialog.open(CreateAnnouncementComponent, dialogConfig);
+    const dialogRef = this.matDialog.open(CreateAnnouncementComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result : Announcement) => {
+      if (result) this.announcements = [result, ...this.announcements];
+    })
+    this.announcements = [this.announcements[0], ...this.announcements]
   }
 
 }

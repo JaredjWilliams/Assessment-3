@@ -1,38 +1,56 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import User from "../../models/User";
 import * as fromAuth from 'src/app/auth/auth.reducer';
 import { Store } from '@ngrx/store';
+import { HttpClient } from '@angular/common/http';
+import Announcement from 'src/app/models/Announcement';
+
+const baseUrl = 'http://localhost:8080'
 
 @Component({
   selector: 'app-create-announcement',
   templateUrl: './create-announcement.component.html',
   styleUrls: ['./create-announcement.component.css']
 })
-export class CreateAnnouncementComponent implements OnInit {
+export class CreateAnnouncementComponent {
+  @Input() parentState: Announcement[] = [];
+  @Output() parentStateChange = new EventEmitter<Announcement[]>();
+
 
   firstLast$ = this.store.select(fromAuth.selectFirstLast);
-  // firstName: string = ""
-  // lastName: string = ""
+  teamId$ = this.store.select(fromAuth.selectAdminTeamId);
   title : string = "";
   message : string = "";
 
   constructor(
     private store: Store<fromAuth.AuthState>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    private http: HttpClient,
+    @Inject(MAT_DIALOG_DATA) public data: Announcement,
     private dialogRef: MatDialogRef<CreateAnnouncementComponent>
   ) {
   }
 
-  ngOnInit(): void {
-    // this.firstName = this.data.actionsObserver._value.loginSuccessResp.profile.firstName
-    // this.lastName = this.data.actionsObserver._value.loginSuccessResp.profile.lastName
-  }
-
-
   submit() {
-    this.dialogRef.close({
-
+    this.store.select(fromAuth.selectCompanyId).subscribe(companyId => {
+      this.store.select(fromAuth.selectUserId).subscribe(userId => {
+        this.store.select(fromAuth.selectAdminTeamId).subscribe(teamId => {
+          const request = {
+            title: this.title,
+            message: this.message,
+            authorId: userId,
+            teamId
+          }
+          this.http.post<any>(`${baseUrl}/company/${companyId}/user/${userId}/announcements`, request).subscribe(
+            (response: Announcement) => {
+              this.dialogRef.close(response);
+            },
+            (error) => {
+              console.error('Error loading announcements:', error);
+            }
+          );
+        });
+        
+      });
     });
   }
 

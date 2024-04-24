@@ -70,3 +70,7 @@ export const selectFirstLast = createSelector( selectAuthState, s => s.user.prof
 export const selectCompany = createSelector( selectAuthState, s => s.company)
 
 export const selectCompanyId = createSelector( selectAuthState, s => s.company?.id ?? 0)
+
+export const selectUserId = createSelector( selectAuthState, s => s.user.id)
+
+export const selectAdminTeamId = createSelector( selectAuthState, s => s.user.teams[0].id)

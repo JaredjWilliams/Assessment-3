@@ -5,5 +5,6 @@ export default interface Announcement {
   date: Date;
   title: string;
   message: string;
+  authorFirstName: string;
   author: UserInfo;
 }

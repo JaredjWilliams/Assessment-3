@@ -15,7 +15,7 @@
         <li class="heading-color p-2 onHover" routerLink="">Home</li>
         <li class="heading-color p-2 onHover" *ngIf="isAdmin$ | async" routerLink="/company">Company</li>
         <li class="heading-color p-2 onHover" routerLink="/teams">Teams</li>
-        <li class="heading-color p-2 onHover" *ngIf="isAdmin$ | async" routerLink="users">Users</li>
+        <li class="heading-color p-2 onHover" *ngIf="isAdmin$ | async" routerLink="/user-registry">Users</li>
         <li class="heading-color p-2 onHover" (click)="doLogout()" routerLink="/login">Logout</li>
       </ul>
       <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="!(loggedIn$ | async)">

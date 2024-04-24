@@ -1,4 +1,4 @@
-  <ng-container *ngIf="companies">
+ <ng-container *ngIf="companies">
     <div>
       <select #dropdown name="companies" id="companies" (change)="submit(JSON.parse(dropdown.value))" class="drop-down">
         <option value="" disabled selected hidden>Pick an option</option>

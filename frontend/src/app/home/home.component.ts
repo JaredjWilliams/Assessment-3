@@ -59,6 +59,4 @@ export class HomeComponent implements OnInit {
     this.matDialog.open(CreateAnnouncementComponent, dialogConfig);
   }
 
-
-
 }

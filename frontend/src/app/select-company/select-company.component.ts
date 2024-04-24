@@ -4,7 +4,8 @@ import Company from "../models/Company";
 import {Router} from "@angular/router";
 import * as fromAuth from "../auth/auth.reducer";
 import {Store} from "@ngrx/store";
-import {filter, map} from "rxjs";
+
+
 
 @Component({
   selector: 'app-select-company',
@@ -40,4 +41,5 @@ export class SelectCompanyComponent implements OnInit {
       }
     )
   }
+
 }

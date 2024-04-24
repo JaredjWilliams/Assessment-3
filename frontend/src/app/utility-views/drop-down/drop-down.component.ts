@@ -15,13 +15,13 @@ export class DropDownComponent {
 
   @Output() companySelected = new EventEmitter<Company>();
 
-
-  constructor (private router: Router, private companyService: CompanyService) {}
+  constructor () {}
 
   submit(company: Company) {
     this.companySelected.emit(company);
   }
 
   protected readonly JSON = JSON;
+
 }
 

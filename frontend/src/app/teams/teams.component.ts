@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { AuthState, selectTeams, selectUser } from '../auth/auth.reducer';
 import {map, Observable, Subject, takeUntil} from 'rxjs';
 import Team from '../models/Team';
 import { Router } from '@angular/router';
 import {CompanyService} from "../services/company/company.service";
 import Company from "../models/Company";
+import * as fromAuth from "../auth/auth.reducer";
 
 @Component({
   selector: 'app-teams',
@@ -14,11 +14,12 @@ import Company from "../models/Company";
 })
 export class TeamsComponent  implements OnInit {
   private destroy$ = new Subject<void>();
+  isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
 
   teams: Team[] = [];
 
   constructor(
-    private store: Store<AuthState>,
+    private store: Store<fromAuth.AuthState>,
     private router: Router,
     private companyService: CompanyService
     ) { }

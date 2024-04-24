@@ -11,7 +11,7 @@
 
     </app-team-card>
 
-    <ng-container *ngIf="teams.length < 6">
+    <ng-container *ngIf="(isAdmin$ | async) && (teams.length < 6)">
       <app-new-team-item>
 
       </app-new-team-item>

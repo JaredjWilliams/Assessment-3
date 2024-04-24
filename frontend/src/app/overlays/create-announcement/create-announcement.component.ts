@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import User from "../../models/User";
+import * as fromAuth from 'src/app/auth/auth.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-create-announcement',
@@ -9,20 +11,22 @@ import User from "../../models/User";
 })
 export class CreateAnnouncementComponent implements OnInit {
 
-  firstName: string = ""
-  lastName: string = ""
+  firstLast$ = this.store.select(fromAuth.selectFirstLast);
+  // firstName: string = ""
+  // lastName: string = ""
   title : string = "";
   message : string = "";
 
   constructor(
+    private store: Store<fromAuth.AuthState>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<CreateAnnouncementComponent>
   ) {
   }
 
   ngOnInit(): void {
-    this.firstName = this.data.actionsObserver._value.loginSuccessResp.profile.firstName
-    this.lastName = this.data.actionsObserver._value.loginSuccessResp.profile.lastName
+    // this.firstName = this.data.actionsObserver._value.loginSuccessResp.profile.firstName
+    // this.lastName = this.data.actionsObserver._value.loginSuccessResp.profile.lastName
   }
 
 

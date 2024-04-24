@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import User from 'src/app/models/User';
+import * as fromAuth from 'src/app/auth/auth.reducer';
 
 const baseUrl = 'http://localhost:8080'
 
@@ -21,6 +23,7 @@ export class AddUserComponent implements OnInit {
   adminStatus: boolean = false;
 
   constructor (
+    private store: Store<fromAuth.AuthState>,
     private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<AddUserComponent>
@@ -43,14 +46,17 @@ export class AddUserComponent implements OnInit {
       },
       admin: this.adminStatus
     }
-    this.http.post<any>(`${baseUrl}/users`, request).subscribe(
-      (response: User) => {
-        this.dialogRef.close(response);
-      },
-      (error) => {
-        console.error('Error loading announcements:', error);
-      }
-    );
+    
+    this.store.select(fromAuth.selectCompanyId).subscribe(companyId => {
+      this.http.post<any>(`${baseUrl}/users/company/${companyId}`, request).subscribe(
+        (response: User) => {
+          this.dialogRef.close(response);
+        },
+        (error) => {
+          console.error('Error loading announcements:', error);
+        }
+      );
+    });
   }
 
   exit() {

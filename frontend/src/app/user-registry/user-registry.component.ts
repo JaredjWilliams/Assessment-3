@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import UserInfo from '../models/UserInfo';
-import { CompanyService } from '../services/company/company.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddUserComponent } from '../overlays/add-user/add-user.component';
 import { Store } from '@ngrx/store';
@@ -29,7 +28,7 @@ export class UserRegistryComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(fromAuth.selectCompanyId).subscribe(companyId => {
-      this.http.get<any>(`${baseUrl}/company/${companyId}/users`).subscribe(
+      this.http.get<any>(`${baseUrl}/company/${companyId}/users/all`).subscribe(
         (response: User[]) => {
           this.users = response.sort((a, b) => {
             if (a.id && b.id) return b.id - a.id;

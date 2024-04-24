@@ -56,7 +56,6 @@ export class CreateTeamComponent implements OnInit {
       this.selectedUsers = this.selectedUsers.filter(u => u !== user)
     } else {
       this.selectedUsers.push(user)
-      console.log(this.selectedUsers)
     }
   }
 

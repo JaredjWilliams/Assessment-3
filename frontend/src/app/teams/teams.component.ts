@@ -13,18 +13,19 @@ import {TeamService} from "../services/team/team.service";
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.css']
 })
-export class TeamsComponent  implements OnInit {
-  private destroy$ = new Subject<void>();
-  isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
 
-  teams: Team[] = [];
+export class TeamsComponent  implements OnInit {
+
+  isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
+  private destroy$ = new Subject<void>();
   companyId! : number;
+  teams: Team[] = [];
 
   constructor(
     private store: Store<fromAuth.AuthState>,
-    private router: Router,
     private companyService: CompanyService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -39,8 +40,7 @@ export class TeamsComponent  implements OnInit {
       },
       error: (err) => {
         console.log(err);
-      }
-    })
+      }})
   }
 
   getCompanyId() {
@@ -48,14 +48,11 @@ export class TeamsComponent  implements OnInit {
       next: (company) => {
         if (company) {
           this.companyId = company.id;
-        }
-      },
+        }},
       error: (err) => {
         console.log(err);
-      }
-    })
+      }})
   }
-
 
   showProjects(team: any): void {
     this.router.navigate(['/projects', {team: JSON.stringify(team)}]);
@@ -65,10 +62,10 @@ export class TeamsComponent  implements OnInit {
     this.teamService.postTeam($event, this.companyId).subscribe({
       next: (team) => {
         this.getTeamsFromCompany()
-        console.log(this.teams)
       },
       error: (err) => {
         console.log(err);
       }
-    })}
+    })
+  }
 }

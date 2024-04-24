@@ -69,7 +69,6 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result : Announcement) => {
       if (result) this.announcements = [result, ...this.announcements];
     })
-    this.announcements = [this.announcements[0], ...this.announcements]
   }
 
 }

@@ -10,5 +10,11 @@
     >
 
     </app-team-card>
+
+    <ng-container *ngIf="teams.length < 6">
+      <app-new-team-item>
+
+      </app-new-team-item>
+    </ng-container>
   </div>
 </div>

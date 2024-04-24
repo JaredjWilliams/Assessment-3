@@ -49,6 +49,15 @@
   transition: 0.25s;
 }
 
+.raiseUpOnHover:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.raiseUpOnHover {
+  transition: 0.25s;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

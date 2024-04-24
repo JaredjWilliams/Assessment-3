@@ -28,6 +28,10 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
+  showProjects(team: Team): void {
+    this.router.navigate(['/projects', { team: JSON.stringify(team) }]);
+  }
+
   loadProjectsByTeamId(teamId: number): void {
     this.http.get<any[]>(`${baseUrl}/projects/team/${teamId}`).subscribe(
       (response) => {

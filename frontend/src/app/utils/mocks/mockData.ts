@@ -13,6 +13,20 @@ export const mockProfile: Profile = {
   phone: "900909090909"
 }
 
+export const mockProfile2: Profile = {
+  email: "com@com.com",
+  firstName: "com",
+  lastName: "com",
+  phone: "000000000000"
+}
+
+export const mockProfile3: Profile = {
+  email: "gmail@hotmail.com",
+  firstName: "France",
+  lastName: "Italianberg",
+  phone: "8"
+}
+
 export const mockUserInfo: UserInfo = {
   admin: true,
   active: true,
@@ -33,7 +47,27 @@ export const mockUser: User = {
   profile: mockProfile,
   admin: false,
   active: false,
-  status: "",
+  status: "PENDING",
+  companies: [],
+  teams: [mockTeams]
+}
+
+export const mockUser2: User = {
+  id: 1,
+  profile: mockProfile2,
+  admin: true,
+  active: true,
+  status: "JOINED",
+  companies: [],
+  teams: [mockTeams]
+}
+
+export const mockUser3: User = {
+  id: 2,
+  profile: mockProfile3,
+  admin: false,
+  active: true,
+  status: "PENDING",
   companies: [],
   teams: [mockTeams]
 }
@@ -44,6 +78,14 @@ export const mockCompany : Company = {
   name: "Company 1",
   teams: [mockTeams],
   employees: [mockUser]
+}
+
+export const mockCompany2 : Company = {
+  description: "Company 2 Description",
+  id: 2,
+  name: "Company 2",
+  teams: [mockTeams],
+  employees: [mockUser, mockUser2, mockUser3]
 }
 
 export const mockCredentials : Credentials = {

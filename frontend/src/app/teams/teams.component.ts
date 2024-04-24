@@ -35,7 +35,10 @@ export class TeamsComponent  implements OnInit {
   getTeamsFromCompany() {
     this.companyService.getTeamsFromCompany(this.companyId).subscribe({
       next: (teams) => {
-        this.teams = teams;
+        this.teams = teams.sort((a, b) => {
+          if (a.id && b.id) return a.id - b.id;
+          return 0;
+        });
       },
       error: (err) => {
         console.log(err);

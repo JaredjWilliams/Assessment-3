@@ -6,8 +6,10 @@ import Team from "../../models/Team";
 import User from "../../models/User";
 import {Projects} from "@angular/cli/lib/config/workspace-schema";
 import {BehaviorSubject} from "rxjs";
+import { Store, select } from '@ngrx/store';
+import * as fromAuth from 'src/app/auth/auth.reducer';
 
-export const SELECTED_COMPANY = 'selectedCompany'
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +19,12 @@ export class CompanyService {
   private selectedCompany = new BehaviorSubject<Company | null>(null);
 
   constructor(
+    private store: Store<fromAuth.AuthState>,
     private http : HttpClient
-  ) { }
-
-  setSelectedCompany(company: Company) {
-    this.selectedCompany.next(company);
+  ) {
+    this.store.pipe(select(fromAuth.selectCompany)).subscribe(company => {
+      this.selectedCompany.next(company); 
+    });
   }
 
   getSelectedCompany() {

@@ -39,7 +39,8 @@ export const mockTeams: Team = {
   description: "Team 1 Description",
   id: 1,
   name: "Team 1",
-  teammates: [mockUserInfo]
+  teammates: [mockUserInfo],
+  numberOfProjects: 3
 }
 
 export const mockUser: User = {

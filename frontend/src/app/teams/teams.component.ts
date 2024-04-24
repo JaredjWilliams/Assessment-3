@@ -22,6 +22,9 @@ export class TeamsComponent  implements OnInit {
 
   ngOnInit(): void {
     this.teams$ = this.store.pipe(select(selectTeams));
-    console.log(this.teams$);
+  }
+
+  showProjects(team: any): void {
+    this.router.navigate(['/projects', {team: JSON.stringify(team)}]);
   }
 }

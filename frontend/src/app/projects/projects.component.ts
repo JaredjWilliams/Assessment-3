@@ -49,7 +49,10 @@ export class ProjectsComponent implements OnInit {
   loadProjectsByTeamId(teamId: number): void {
     this.service.getProjects(teamId).subscribe({
       next: (projects: Project[]) => {
-        this.projects = projects;
+        this.projects = projects.sort((a, b) => {
+          if (a.id && b.id) return b.id - a.id;
+          return 0;
+        });
       },
       error: (error: any) => {
         console.error(error);

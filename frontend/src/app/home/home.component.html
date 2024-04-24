@@ -11,7 +11,7 @@
   </div>
   <ng-container *ngFor="let announcement of announcements">
     <app-announcement-card
-      [username]="announcement.author.profile.firstName"
+      [username]="announcement.authorFirstName"
       [title]="'CEO'"
       [postedAt]="formatDate(announcement.date)"
       [message]="announcement.message">

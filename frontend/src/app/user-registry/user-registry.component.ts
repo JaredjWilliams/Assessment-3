@@ -24,8 +24,8 @@ export class UserRegistryComponent implements OnInit {
 
   openDialog() {
     const dialogConfig = new MatDialogConfig()
-    dialogConfig.width = '490px';
-    dialogConfig.height = '440px';
+    dialogConfig.width = '600px';
+    dialogConfig.height = '750px';
     this.matDialog.open(AddUserComponent, dialogConfig)
   }
 

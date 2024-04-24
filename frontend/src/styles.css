@@ -9,8 +9,19 @@
   --secondary-background: #0B2D45;
 }
 
+.mulish {
+           font-family: "Mulish", sans-serif;
+           font-optical-sizing: auto;
+           font-weight: 400;
+           font-style: normal;
+         }
+
 .primary-background {
   background-color: var(--primary-background);
+}
+
+.secondary-background {
+  background-color: var(--secondary-background);
 }
 
 .heading-color {
@@ -75,14 +86,15 @@ html {
 }
 
 .project-button {
-    background-color: var(--heading-color);
-    color: white;
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    padding: 5px 35px;
-    outline: none;
+  background-color: var(--heading-color);
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 35px;
+  outline: none;
   margin-top: auto;
+
 }
 
 

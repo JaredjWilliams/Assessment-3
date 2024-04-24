@@ -1,9 +1,9 @@
 <div class="d-flex flex-column center">
   <div>
-    <h1 class="text-center heading-color">Teams</h1>
+    <h1 class="mulish heading-color p-5">Teams</h1>
   </div>
-  <div class="grid" *ngFor="let team of teams$ | async">
-    <app-team-card
+  <div class="grid" >
+    <app-team-card *ngFor="let team of teams"
     [name] = "team.name"
     [description] = "team.description"
     [teammates] = "team.teammates"
@@ -13,8 +13,3 @@
   </div>
 </div>
 
-
-<!--<p>teams works!</p>-->
-<!--<ul>-->
-<!--  <li *ngFor="let team of teams$ | async"  (click)="showProjects(team)">{{ team.name }} {{team.description}}  | {{team.teammates.length}} members</li>-->
-<!--</ul>-->

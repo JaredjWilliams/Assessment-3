@@ -26,6 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/auth.effects';
 import { TeamCardComponent } from './utility-views/team-card/team-card.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { LastNameConverterPipe } from './utils/pipes/last-name-converter.pipe';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     DropDownComponent,
     TextInputComponent,
     AnnouncementCardComponent,
-    TeamCardComponent
+    TeamCardComponent,
+    LastNameConverterPipe
   ],
   imports: [
     BrowserModule,

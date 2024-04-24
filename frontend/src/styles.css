@@ -85,5 +85,15 @@ html {
   margin-top: auto;
 }
 
+.styled-button {
+  background-color: var(--heading-color);
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 35px;
+  outline: none;
+}
+
 
 

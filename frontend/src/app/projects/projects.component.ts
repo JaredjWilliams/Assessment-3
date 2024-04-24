@@ -24,8 +24,8 @@ interface DialogCloseResult {
 export class ProjectsComponent implements OnInit {
 
   isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
-  team!: Team;
   projects: Project[] = [];
+  team!: Team;
 
   constructor(
     private service: ProjectService,
@@ -42,10 +42,6 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  showProjects(team: Team): void {
-    this.router.navigate(['/projects', { team: JSON.stringify(team) }]);
-  }
-
   loadProjectsByTeamId(teamId: number): void {
     this.service.getProjects(teamId).subscribe({
       next: (projects: Project[]) => {
@@ -56,8 +52,7 @@ export class ProjectsComponent implements OnInit {
       },
       error: (error: any) => {
         console.error(error);
-      }
-    });
+      }});
   }
 
   postProject(project : Project): void {
@@ -67,27 +62,28 @@ export class ProjectsComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
-      }
-    });
+      }});
   }
 
   goBack(): void {
     this.router.navigate(['/teams']); // Replace 'previous-page' with the route of the page you want to navigate back to
   }
 
-  protected readonly mockProject = mockProject;
-
   openDialog(project: Project | null) {
+    this.matDialog.open(CreateProjectComponent, this.composeDialogConfig())
+      .afterClosed().subscribe((result : DialogCloseResult) => {
+        return this.onClose(result);
+    })
+  }
+
+  composeDialogConfig(project : Project | null = null) {
     const dialogConfig = new MatDialogConfig();
     if (project) {
       dialogConfig.data = project;
     }
-    dialogConfig.width = '490px';
-    dialogConfig.height = '440px';
-    const dialogRef = this.matDialog.open(CreateProjectComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result : DialogCloseResult) => {
-      return this.onClose(result);
-    })
+    dialogConfig.width = '768px';
+    dialogConfig.height = '687px';
+    return dialogConfig;
   }
 
   onClose(result : {project: Project, isNew: boolean}) {
@@ -104,10 +100,10 @@ export class ProjectsComponent implements OnInit {
         this.loadProjectsByTeamId(this.team.id);
       },
       error: (error: any) => {
-        console.log(project);
-      }
-    });
+        console.log(error);
+      }});
   }
 
+  protected readonly mockProject = mockProject;
 
 }

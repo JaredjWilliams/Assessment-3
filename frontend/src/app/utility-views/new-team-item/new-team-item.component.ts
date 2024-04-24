@@ -9,9 +9,9 @@ import UserInfo from "../../models/UserInfo";
   templateUrl: './new-team-item.component.html',
   styleUrls: ['./new-team-item.component.css']
 })
+
 export class NewTeamItemComponent {
   @Output() newTeam = new EventEmitter<any>();
-
 
   constructor(
     private matDialog: MatDialog,
@@ -22,23 +22,27 @@ export class NewTeamItemComponent {
   }
 
   openDialog() {
+    this.matDialog.open(CreateTeamComponent, this.composeDialogConfig())
+      .afterClosed().subscribe((result: Team) => {
+      if (result) {
+        this.newTeam.emit(this.composeTeam(result));
+      }
+    });
+  }
+
+  composeDialogConfig() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '768px';
     dialogConfig.height = '687px';
-    const dialogRef = this.matDialog.open(CreateTeamComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result: Team) => {
+    return dialogConfig;
+  }
 
-      const team = {
-        name: result.name,
-        description: result.description,
-        teammateIds: [...Array.from(result.teammates)].map((user: UserInfo) => user.id)
-      }
-      console.log(team)
-      if (result) {
-        this.newTeam.emit(team);
-      }
-    });
-
+  composeTeam(team: any) {
+    return {
+      name: team.name,
+      description: team.description,
+      teammateIds: team.teammateIds
+    }
   }
 
 

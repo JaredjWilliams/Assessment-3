@@ -24,3 +24,12 @@
      </select>
    </div>
  </ng-container>
+
+ <ng-container *ngIf="forAdminStatus">
+  <div>
+    <select #dropdown name="employees" id="adminStatus" (change)="submitForAdminStatus(dropdown.value)" class="drop-down">
+      <option value="" disabled selected hidden>Pick an option</option>
+      <option class="option" *ngFor="let status of statuses" [value]="status">{{status}}</option>
+    </select>
+  </div>
+</ng-container>

@@ -21,11 +21,16 @@ export class AddUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   submit() {
+    this.dialogRef.close({
 
+    });
+  }
+
+  exit() {
+    this.dialogRef.close();
   }
 
 }

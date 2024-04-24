@@ -29,6 +29,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { LastNameConverterPipe } from './utils/pipes/last-name-converter.pipe';
 import { NewTeamItemComponent } from './utility-views/new-team-item/new-team-item.component';
 import { DatePipe } from '@angular/common';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

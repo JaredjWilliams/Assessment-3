@@ -4,6 +4,7 @@ import Company from "../../models/Company";
 import User from "../../models/User";
 import {CompanyService} from "../../services/company/company.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import UserInfo from "../../models/UserInfo";
 
 @Component({
   selector: 'app-create-team',
@@ -26,7 +27,9 @@ export class CreateTeamComponent implements OnInit {
 
   submit() {
     this.dialogRef.close({
-
+      name: this.titleName,
+      description: this.description,
+      teammates: this.selectedUsers
     });
   }
 
@@ -35,18 +38,17 @@ export class CreateTeamComponent implements OnInit {
   }
 
 
-  parseTeams() {
+  parseEmployees() {
     this.companyService.getSelectedCompany().pipe(
       takeUntil(this.destroy$),
       map((company : Company | null) => company ? company.employees : [])
     ).subscribe((users : User[]) => {
-      console.log(users)
-      this.users = users;
+      this.users = users
     })
   }
 
   ngOnInit(): void {
-    this.parseTeams()
+    this.parseEmployees()
   }
 
   selected(user: User) {

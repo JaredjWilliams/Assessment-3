@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import {CompanyService} from "../services/company/company.service";
 import Company from "../models/Company";
 import * as fromAuth from "../auth/auth.reducer";
+import {TeamService} from "../services/team/team.service";
 
 @Component({
   selector: 'app-teams',
@@ -17,28 +18,57 @@ export class TeamsComponent  implements OnInit {
   isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
 
   teams: Team[] = [];
+  companyId! : number;
 
   constructor(
     private store: Store<fromAuth.AuthState>,
     private router: Router,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private teamService: TeamService
     ) { }
 
   ngOnInit(): void {
-    this.parseTeams()
+    this.getCompanyId()
+    this.getTeamsFromCompany()
   }
 
-  parseTeams() {
-    this.companyService.getSelectedCompany().pipe(
-      takeUntil(this.destroy$),
-      map((company : Company | null) => company ? company.teams : [])
-    ).subscribe((teams : Team[]) => {
-      console.log(teams)
-      this.teams = teams;
+  getTeamsFromCompany() {
+    this.companyService.getTeamsFromCompany(this.companyId).subscribe({
+      next: (teams) => {
+        this.teams = teams;
+      },
+      error: (err) => {
+        console.log(err);
+      }
     })
   }
+
+  getCompanyId() {
+    this.companyService.getSelectedCompany().subscribe({
+      next: (company) => {
+        if (company) {
+          this.companyId = company.id;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
 
   showProjects(team: any): void {
     this.router.navigate(['/projects', {team: JSON.stringify(team)}]);
   }
+
+  addTeam($event: any) {
+    this.teamService.postTeam($event, this.companyId).subscribe({
+      next: (team) => {
+        this.getTeamsFromCompany()
+        console.log(this.teams)
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })}
 }

@@ -7,5 +7,20 @@
 }
 
 .acting-as-admin {
-  color: #FF0000;
+  color: #F24E1E;
+}
+
+.circle-background {
+  background-image: url("../../assets/Ellipse.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0.2em;
+  margin-left: 0.5em;
+}
+
+.logo {
+  width: 1.5em;
+  position: relative;
+  top: -0.2em;
 }

@@ -32,10 +32,6 @@ export class AuthEffects {
           } else {
             this.router.navigateByUrl('/');
           }
-
-          alert(
-            'Login Success'
-          );
         })
       ),
       {dispatch: false}

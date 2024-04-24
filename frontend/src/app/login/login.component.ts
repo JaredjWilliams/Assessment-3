@@ -29,8 +29,8 @@ export class LoginComponent {
     }
 
 
-  autofill() {
-    this.email = "thisismycompany";
-    this.password = "getyourowncompany";
+  autofill(user: string, pass: string) {
+    this.email = user;
+    this.password = pass;
   }
 }

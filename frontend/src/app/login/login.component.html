@@ -20,6 +20,10 @@
       <button class="login-button" (click)="signIn()">LOGIN</button>
   </div>
 </div>
-  <button (click)="autofill()">Autofill Here!</button>
+<div  [style]="{'display': 'flex'}">
+  <button (click)="autofill('thisismycompany', 'getyourowncompany')">thisismycompany</button>
+  <button (click)="autofill('cousingreg', 'mosteligiblebachelor')">cousingreg</button>
+  <button (click)="autofill('kennysusername', 'kennyspassword')">kennysusername</button>
+  <button (click)="autofill('willsusername', 'willspassword')">willsusername</button>
 </div>
 

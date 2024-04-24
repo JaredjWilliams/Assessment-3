@@ -1,6 +1,10 @@
-<div>
-    <select #dropdown name="items" id="items" (change)="submit(dropdown.value)" class="drop-down">
+  <ng-container *ngIf="companies">
+    <div>
+      <select #dropdown name="companies" id="companies" (change)="submit(JSON.parse(dropdown.value))" class="drop-down">
         <option value="" disabled selected hidden>Pick an option</option>
-        <option class="option" *ngFor="let item of items" [value]="item">{{item}}</option>
-    </select>
-</div>
+        <option class="option" *ngFor="let company of companies" [value]="company | json">{{company.name}}</option>
+      </select>
+    </div>
+  </ng-container>
+
+

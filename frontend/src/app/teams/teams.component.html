@@ -1,4 +1,20 @@
-<p>teams works!</p>
-<ul>
-  <li *ngFor="let team of teams$ | async"  (click)="showProjects(team)">{{ team.name }} {{team.description}}  | {{team.teammates.length}} members</li>
-</ul>
+<div class="d-flex flex-column center">
+  <div>
+    <h1 class="text-center heading-color">Teams</h1>
+  </div>
+  <div class="grid" *ngFor="let team of teams$ | async">
+    <app-team-card
+    [name] = "team.name"
+    [description] = "team.description"
+    [teammates] = "team.teammates"
+    >
+
+    </app-team-card>
+  </div>
+</div>
+
+
+<!--<p>teams works!</p>-->
+<!--<ul>-->
+<!--  <li *ngFor="let team of teams$ | async"  (click)="showProjects(team)">{{ team.name }} {{team.description}}  | {{team.teammates.length}} members</li>-->
+<!--</ul>-->

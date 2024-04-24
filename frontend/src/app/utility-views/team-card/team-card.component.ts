@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import User from 'src/app/models/User';
+import UserInfo from "../../models/UserInfo";
 
 @Component({
   selector: 'app-team-card',
@@ -10,6 +11,8 @@ export class TeamCardComponent {
 
   @Input() id: number = 0;
   @Input() numProjects = 0;
-  @Input() members: User[] = [];
+  @Input() teammates: UserInfo[] = [];
+  @Input() name = '';
+  @Input() description = '';
 
 }

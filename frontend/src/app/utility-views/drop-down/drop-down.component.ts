@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/services/company/company.service';
+import Company from "../../models/Company";
 
 @Component({
   selector: 'app-drop-down',
@@ -9,13 +10,18 @@ import { CompanyService } from 'src/app/services/company/company.service';
 })
 export class DropDownComponent {
 
-  @Input() items: string[] = [];
+  @Input() items: any[] = [];
+  @Input() companies: Company[] =  [];
+
+  @Output() companySelected = new EventEmitter<Company>();
+
 
   constructor (private router: Router, private companyService: CompanyService) {}
 
-  submit(selectedItem: string) {
-    this.companyService.setSelectedCompany(selectedItem)
-    this.router.navigate([''])
+  submit(company: Company) {
+    this.companySelected.emit(company);
   }
+
+  protected readonly JSON = JSON;
 }
 

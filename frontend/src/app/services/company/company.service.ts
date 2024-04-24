@@ -5,6 +5,7 @@ import {mockCompany, mockCredentials} from "../../utils/mocks/mockData";
 import Team from "../../models/Team";
 import User from "../../models/User";
 import {Projects} from "@angular/cli/lib/config/workspace-schema";
+import {BehaviorSubject} from "rxjs";
 
 export const SELECTED_COMPANY = 'selectedCompany'
 
@@ -13,20 +14,22 @@ export const SELECTED_COMPANY = 'selectedCompany'
 })
 export class CompanyService {
 
+  private selectedCompany = new BehaviorSubject<Company | null>(null);
+
   constructor(
     private http : HttpClient
   ) { }
 
-  getSelectedCompany() {
-    return localStorage.getItem(SELECTED_COMPANY)
+  setSelectedCompany(company: Company) {
+    this.selectedCompany.next(company);
   }
 
-  setSelectedCompany(companyName: string) {
-    localStorage.setItem(SELECTED_COMPANY, companyName)
+  getSelectedCompany() {
+    return this.selectedCompany.asObservable();
   }
 
   getCompanies() {
-    return this.http.get<[Company]>("http://localhost:8080/companies")
+    return this.http.get<[Company]>("http://localhost:8080/company")
   }
 
   getTeamsFromCompany(id : number) {

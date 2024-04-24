@@ -7,6 +7,7 @@ import {loremIpsum, mockUserInfo} from "../utils/mocks/mockData";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {CreateAnnouncementComponent} from "../overlays/create-announcement/create-announcement.component";
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 const baseUrl = 'http://localhost:8080'
 
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
+    private datePipe: DatePipe,
     private http: HttpClient,
     private store: Store<fromAuth.AuthState>,
     private matDialog: MatDialog
@@ -52,6 +54,10 @@ export class HomeComponent implements OnInit {
         console.error('Error loading announcements:', error);
       }
     );
+  }
+
+  formatDate(date: Date): string {
+    return '' + this.datePipe.transform(date, 'longDate');
   }
 
   openDialog() {

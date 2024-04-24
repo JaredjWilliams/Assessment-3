@@ -2,7 +2,7 @@
   <div class="input-text-container align-items-center d-flex flex-column">
     <div class="d-flex flex-row justify-content-between top-container">
       <div class="flex-grow-1">
-        <h1 class="text-center ml-5">{{firstName}}, {{lastName}}</h1>
+        <h1 class="text-center ml-5">{{firstLast$ | async}}</h1>
       </div>
       <div >
         <img src="./assets/exit.png" alt="" class="onHover" (click)="exit()">

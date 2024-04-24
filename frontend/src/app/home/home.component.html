@@ -13,7 +13,7 @@
     <app-announcement-card
       [username]="announcement.author.profile.firstName"
       [title]="'CEO'"
-      [postedAt]="''+announcement.date"
+      [postedAt]="formatDate(announcement.date)"
       [message]="announcement.message">
     </app-announcement-card>
   </ng-container>

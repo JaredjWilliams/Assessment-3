@@ -28,6 +28,7 @@ import { TeamCardComponent } from './utility-views/team-card/team-card.component
 import {MatDialogModule} from "@angular/material/dialog";
 import { LastNameConverterPipe } from './utils/pipes/last-name-converter.pipe';
 import { NewTeamItemComponent } from './utility-views/new-team-item/new-team-item.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -62,7 +63,7 @@ import { NewTeamItemComponent } from './utility-views/new-team-item/new-team-ite
     FormsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

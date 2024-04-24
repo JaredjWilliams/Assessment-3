@@ -3,8 +3,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Team from '../models/Team';
 import { HttpClient } from '@angular/common/http';
 import Project from '../models/Project';
+import {ProjectService} from "../services/project/project.service";
+import {mockProject} from "../utils/mocks/mockData";
+import * as fromAuth from "../auth/auth.reducer";
+import {Store} from "@ngrx/store";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {CreateProjectComponent} from "../overlays/create-project/create-project.component";
 
-const baseUrl = 'http://localhost:8080'
+
+interface DialogCloseResult {
+  project: Project;
+  isNew: boolean;
+}
 
 @Component({
   selector: 'app-projects',
@@ -12,13 +22,17 @@ const baseUrl = 'http://localhost:8080'
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  team!: Team; 
+
+  isAdmin$ = this.store.select(fromAuth.selectIsAdmin);
+  team!: Team;
   projects: Project[] = [];
 
   constructor(
-    private route: ActivatedRoute, 
+    private service: ProjectService,
+    private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
+    private store: Store<fromAuth.AuthState>,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -33,17 +47,64 @@ export class ProjectsComponent implements OnInit {
   }
 
   loadProjectsByTeamId(teamId: number): void {
-    this.http.get<any[]>(`${baseUrl}/projects/team/${teamId}`).subscribe(
-      (response) => {
-        this.projects = response;
+    this.service.getProjects(teamId).subscribe({
+      next: (projects: Project[]) => {
+        this.projects = projects;
       },
-      (error) => {
-        console.error('Error loading projects:', error);
+      error: (error: any) => {
+        console.error(error);
       }
-    );
+    });
+  }
+
+  postProject(project : Project): void {
+    this.service.postProject(this.team.id, project).subscribe({
+      next: (project: Project) => {
+        this.loadProjectsByTeamId(this.team.id)
+      },
+      error: (error: any) => {
+        this.projects.push(project);
+      }
+    });
   }
 
   goBack(): void {
     this.router.navigate(['/teams']); // Replace 'previous-page' with the route of the page you want to navigate back to
   }
+
+  protected readonly mockProject = mockProject;
+
+  openDialog(project: Project | null) {
+    const dialogConfig = new MatDialogConfig();
+    if (project) {
+      dialogConfig.data = project;
+    }
+    dialogConfig.width = '490px';
+    dialogConfig.height = '440px';
+    const dialogRef = this.matDialog.open(CreateProjectComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result : DialogCloseResult) => {
+      return this.onClose(result);
+    })
+  }
+  onClose(result : {project: Project, isNew: boolean}) {
+    if (result.isNew) {
+      this.postProject(result.project);
+    } else {
+      this.updateProject(result.project);
+    }
+  }
+
+  updateProject(project: Project): void {
+    this.service.updateProject(this.team.id, project).subscribe({
+      next: (project: Project) => {
+
+      },
+      error: (error: any) => {
+        console.log(project);
+        this.projects = this.projects.map(p => p.id === project.id ? project : p);
+      }
+    });
+  }
+
+
 }

@@ -4,6 +4,7 @@ import Team from "../../models/Team";
 import Company from "../../models/Company";
 import User from "../../models/User";
 import Credentials from "../../models/Credentials";
+import Project from "../../models/Project";
 
 export const mockProfile: Profile = {
   email: "Testing@gmail.com",
@@ -49,5 +50,13 @@ export const mockCredentials : Credentials = {
   "username": "cousingreg",
   "password": "mosteligiblebachelor"
 }
+
+export const mockProject: Project = {
+  id: 1,
+  name: "Project 1",
+  description: "This is a mock project",
+  active: true,
+  team: mockTeams
+};
 
 export const loremIpsum = "Lorem ipsum our announcements go here! Our business has been going great and we are going to announce the winners of employee of the month! Lorem ipsum Lorem ipsum our announcements go here! Our business has been going great and we are going to announce the winners of employee of the month! Lorem ipsum  Lorem ipsum our announcements go here! Our business has been going great and we are going to announce the winners of employee of the month! Lorem ipsum "

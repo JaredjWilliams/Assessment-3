@@ -1,4 +1,29 @@
-* {
+.edit-button {
+  background-color: var(--border-color);
+  color: black;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 35px;
+  outline: none;
+}
+
+.new-button {
+  background-color: var(--heading-color);
   color: white;
-  background-color: var(--primary-background);
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 35px;
+  outline: none;
+}
+
+.button-container {
+  display: flex;
+  align-content: flex-end;
+  justify-content: flex-end;
+}
+
+.project-border {
+  border-bottom: 1px solid #DEB992;
 }

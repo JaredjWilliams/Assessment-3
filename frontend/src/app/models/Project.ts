@@ -1,9 +1,10 @@
 import Team from "./Team";
 
-export default interface User {
-  id: number;
+export default interface Project {
+  id?: number;
   name: string;
   description: string;
   active: boolean;
-  team: Team;
+  team?: Team;
 }
+

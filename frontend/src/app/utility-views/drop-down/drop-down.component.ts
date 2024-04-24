@@ -16,9 +16,13 @@ export class DropDownComponent {
   @Input() employees: User[] = [];
   @Input() forCompanies: boolean = false;
   @Input() forEmployees: boolean = false;
+  @Input() forActiveStatus: boolean = false;
 
   @Output() companySelected = new EventEmitter<Company>();
   @Output() userSelected = new EventEmitter<User>();
+  @Output() statusSelected = new EventEmitter<boolean>();
+
+  statuses = ['Yes', 'No'];
 
   constructor () {}
 
@@ -28,6 +32,18 @@ export class DropDownComponent {
 
   submitUser(user: User) {
     this.userSelected.emit(user);
+  }
+
+  submitForActiveStatus(status : string) {
+    switch (status) {
+      case 'Yes':
+        this.statusSelected.emit(true);
+        break;
+      case 'No':
+        this.statusSelected.emit(false);
+        break;
+    }
+
   }
 
   protected readonly JSON = JSON;

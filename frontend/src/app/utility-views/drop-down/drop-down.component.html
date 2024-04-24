@@ -16,4 +16,11 @@
     </div>
  </ng-container>
 
-
+ <ng-container *ngIf="forActiveStatus">
+   <div>
+     <select #dropdown name="employees" id="status" (change)="submitForActiveStatus(dropdown.value)" class="drop-down">
+       <option value="" disabled selected hidden>Pick an option</option>
+       <option class="option" *ngFor="let status of statuses" [value]="status">{{status}}</option>
+     </select>
+   </div>
+ </ng-container>

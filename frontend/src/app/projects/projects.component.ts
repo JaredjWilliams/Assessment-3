@@ -66,7 +66,7 @@ export class ProjectsComponent implements OnInit {
         this.loadProjectsByTeamId(this.team.id)
       },
       error: (error: any) => {
-        this.projects.push(project);
+        console.log(error);
       }
     });
   }
@@ -100,11 +100,10 @@ export class ProjectsComponent implements OnInit {
   updateProject(project: Project): void {
     this.service.updateProject(this.team.id, project).subscribe({
       next: (project: Project) => {
-
+        this.loadProjectsByTeamId(this.team.id);
       },
       error: (error: any) => {
         console.log(project);
-        this.projects = this.projects.map(p => p.id === project.id ? project : p);
       }
     });
   }

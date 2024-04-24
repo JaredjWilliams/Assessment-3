@@ -17,6 +17,7 @@ export class DropDownComponent {
   @Input() forCompanies: boolean = false;
   @Input() forEmployees: boolean = false;
   @Input() forActiveStatus: boolean = false;
+  @Input() forAdminStatus: boolean = false;
 
   @Output() companySelected = new EventEmitter<Company>();
   @Output() userSelected = new EventEmitter<User>();
@@ -44,6 +45,17 @@ export class DropDownComponent {
         break;
     }
 
+  }
+
+  submitForAdminStatus(status : string) {
+    switch (status) {
+      case 'Yes':
+        this.statusSelected.emit(true);
+        break;
+      case 'No':
+        this.statusSelected.emit(false);
+        break;
+    }
   }
 
   protected readonly JSON = JSON;

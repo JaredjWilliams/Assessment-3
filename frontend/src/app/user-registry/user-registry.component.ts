@@ -11,6 +11,8 @@ import { AddUserComponent } from '../overlays/add-user/add-user.component';
 })
 export class UserRegistryComponent implements OnInit {
 
+  displayColumns: string[] = ['Name', 'Email', 'Active', 'Admin', 'Status']
+
   users : UserInfo[] = [];
 
   constructor (

@@ -36,4 +36,8 @@ export class TeamsComponent  implements OnInit {
       this.teams = teams;
     })
   }
+
+  showProjects(team: any): void {
+    this.router.navigate(['/projects', {team: JSON.stringify(team)}]);
+  }
 }

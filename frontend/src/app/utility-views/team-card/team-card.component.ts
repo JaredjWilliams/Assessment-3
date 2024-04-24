@@ -12,7 +12,6 @@ export class TeamCardComponent {
   @Input() id: number = 0;
   @Input() numProjects = 0;
   @Input() teammates: UserInfo[] = [];
-  @Input() name = '';
-  @Input() description = '';
-
+  @Input() description!: string;
+  @Input() name!: string;
 }

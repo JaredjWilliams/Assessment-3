@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import Company from "../../models/Company";
-import {mockCompany, mockCredentials} from "../../utils/mocks/mockData";
+import {mockCompany, mockCompany2, mockCredentials} from "../../utils/mocks/mockData";
 import Team from "../../models/Team";
 import User from "../../models/User";
 import {Projects} from "@angular/cli/lib/config/workspace-schema";
@@ -71,5 +71,9 @@ export class CompanyService {
 
   getUsersFromCompanyMock() {
     return mockCompany.employees;
+  }
+
+  getUsersFromCompany2Mock() {
+    return mockCompany2.employees;
   }
 }

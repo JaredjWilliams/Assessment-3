@@ -19,7 +19,7 @@ export class UserRegistryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.users = this.companyService.getUsersFromCompanyMock()
+    this.users = this.companyService.getUsersFromCompany2Mock()
   }
 
   openDialog() {

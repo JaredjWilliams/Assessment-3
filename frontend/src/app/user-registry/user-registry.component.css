@@ -1,0 +1,29 @@
+.false-text {
+    color: red;
+}
+
+.true-text {
+    color: green;
+}
+
+
+table{
+    /* border-collapse: separate; */
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+}
+
+tr {
+    border-bottom: 1px solid var(--border-color);
+    
+}
+
+td, th {
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+    /* border-bottom: 1px solid var(--border-color); */
+}
+
+.border-colored {
+    color: #DEB992;
+}

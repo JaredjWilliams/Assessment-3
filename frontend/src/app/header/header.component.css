@@ -6,6 +6,12 @@
   border-bottom: 2px solid #DEB992;
 }
 
+.left-wrap {
+  position: relative;
+  z-index: 10;
+  display: flex;
+}
+
 .acting-as-admin {
   color: #F24E1E;
 }
@@ -17,6 +23,7 @@
   background-position: center;
   padding: 0.2em;
   margin-left: 0.5em;
+  margin-bottom: 0.1em;
 }
 
 .logo {
@@ -27,9 +34,6 @@
 
 @media (max-width: 599px) {
   .heading-color {
-    display: none;
-  }
-  .navbar-nav {
     display: none;
   }
 }

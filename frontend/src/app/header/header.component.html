@@ -1,22 +1,24 @@
 <ng-container *ngIf="loggedIn$ | async">
   <header class="header">
     <nav class="navbar navbar-expand-md navbar-dark primary-background">
+
+    <button class="secondary-background icon-button" *ngIf="isScreenSmallInput" (click)="toggleMenu()">
+      <mat-icon class="fas fa-bars fa-icon"></mat-icon>
+    </button>
+    <div class="left-wrap">
       <div class="navbar-brand circle-background" routerLink="">
         <img src="assets/logo.png" alt="logo" class="logo cursor-pointer">
       </div>
-
-      <button class="secondary-background icon-button" *ngIf="isScreenSmallInput" (click)="toggleMenu()">
-        <mat-icon class="fas fa-bars fa-icon"></mat-icon>
-      </button>
-
-      <ng-container *ngIf="!isScreenSmallInput">
-      <ul class="navbar-nav" *ngIf="isAdmin$ | async">
+      
+      <ul class="navbar-nav fixed-left" *ngIf="isAdmin$ | async">
         <li class="acting-as-admin p-2">ACTING AS ADMIN</li>
       </ul>
-      <ul class="navbar-nav" *ngIf="!(isAdmin$ | async) && (loggedIn$ | async)">
+      <ul class="navbar-nav fixed-left" *ngIf="!(isAdmin$ | async) && (loggedIn$ | async)">
         <li class="acting-as-admin p-2">{{(firstLast$ | async)}}</li>
       </ul>
+    </div>
 
+    <ng-container *ngIf="!isScreenSmallInput">
       <ul class="navbar-nav navbar-collapse justify-content-end" >
         <li class="heading-color p-2 onHover" routerLink="">Home</li>
         <li class="heading-color p-2 onHover" *ngIf="isAdmin$ | async" routerLink="/company">Company</li>
@@ -27,7 +29,7 @@
       <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="!(loggedIn$ | async)">
         <li class="heading-color p-2 onHover" routerLink="/login">Log In</li>
       </ul>
-      </ng-container>
+    </ng-container>
 
     </nav>
   </header>

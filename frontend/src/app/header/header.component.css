@@ -45,6 +45,10 @@
   border-radius: 5px;
   padding-top: 3px;
   outline: none;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 10;
 }
 
 .fa-icon {

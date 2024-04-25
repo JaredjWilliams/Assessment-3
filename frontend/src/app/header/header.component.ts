@@ -38,8 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   composeBreakpointObserver(): void {
     this.breakpointSubscription = this.breakpointObserver.observe([
-      Breakpoints.HandsetPortrait,
-      Breakpoints.HandsetLandscape
+      '(max-width: 770px)'
     ]).subscribe(result => {
       this.isSmallScreenOutput.emit(result.matches);
       this.screenWidth = window.innerWidth;

@@ -2,7 +2,6 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {CreateTeamComponent} from "../../overlays/create-team/create-team.component";
 import Team from "../../models/Team";
-import UserInfo from "../../models/UserInfo";
 
 @Component({
   selector: 'app-new-team-item',
@@ -37,11 +36,11 @@ export class NewTeamItemComponent {
     return dialogConfig;
   }
 
-  composeTeam(team: any) {
+  composeTeam(team: Team) {
     return {
       name: team.name,
       description: team.description,
-      teammateIds: team.teammateIds
+      teammateIds: team.teammates.map(u => u.id)
     }
   }
 

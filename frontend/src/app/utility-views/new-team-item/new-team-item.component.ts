@@ -41,7 +41,7 @@ export class NewTeamItemComponent {
     return {
       name: team.name,
       description: team.description,
-      teammateIds: team.teammateIds
+      teammateIds: team.teammates.map((teammate: UserInfo) => teammate.id)
     }
   }
 

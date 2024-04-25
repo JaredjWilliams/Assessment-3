@@ -36,7 +36,7 @@ export class AddUserComponent implements OnInit {
     const request = {
       credentials: {
         username: this.firstName + this.lastName,
-        password: this.password 
+        password: this.password
       },
       profile: {
         firstName: this.firstName,
@@ -46,10 +46,12 @@ export class AddUserComponent implements OnInit {
       },
       admin: this.adminStatus
     }
-    
+
     this.store.select(fromAuth.selectCompanyId).subscribe(companyId => {
+      console.log(request)
       this.http.post<any>(`${baseUrl}/users/company/${companyId}`, request).subscribe(
         (response: User) => {
+          console.log(response)
           this.dialogRef.close(response);
         },
         (error) => {
@@ -63,4 +65,7 @@ export class AddUserComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  receiveAdminStatus($event: boolean) {
+    this.adminStatus = $event;
+  }
 }

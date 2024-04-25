@@ -22,7 +22,7 @@ export class ProjectService {
     return this.http.post<Project>(`${baseUrl}/projects/team/${teamId}`, project)
   }
 
-  updateProject(id: number | undefined, project: Project) {
-    return this.http.put<Project>(`${baseUrl}/projects/${id}`, project)
+  updateProject(teamId: number | undefined, projectId : number, project: Project) {
+    return this.http.patch<Project>(`${baseUrl}/projects/team/${teamId}/project/${projectId}`, project)
   }
 }

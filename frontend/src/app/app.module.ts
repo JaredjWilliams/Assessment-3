@@ -30,6 +30,11 @@ import { LastNameConverterPipe } from './utils/pipes/last-name-converter.pipe';
 import { NewTeamItemComponent } from './utility-views/new-team-item/new-team-item.component';
 import { DatePipe } from '@angular/common';
 import {MatTableModule} from "@angular/material/table";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { CustomMenuComponent } from './utility-views/custom-menu/custom-menu.component';
 
 
 @NgModule({
@@ -52,7 +57,8 @@ import {MatTableModule} from "@angular/material/table";
     AnnouncementCardComponent,
     TeamCardComponent,
     LastNameConverterPipe,
-    NewTeamItemComponent
+    NewTeamItemComponent,
+    CustomMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,11 @@ import {MatTableModule} from "@angular/material/table";
     HttpClientModule,
     FormsModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

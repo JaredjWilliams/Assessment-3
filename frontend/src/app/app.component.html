@@ -1,7 +1,19 @@
 
 <ng-container>
-  <app-header></app-header>
+  <app-header
+    [isScreenSmallInput]="isScreenSmall"
+    [isMenuOpenInput]="isMenuOpen"
+    [hasChoicePicked]="hasChoicePicked"
+    (isSmallScreenOutput)="receiveIsSmallScreen($event)"
+    (isMenuOpenOutput)="receiveIsMenuOpen($event)"
+  ></app-header>
 </ng-container>
+
+<app-custom-menu
+  [isScreenSmall]="isScreenSmall"
+  [isMenuOpen]="isMenuOpen"
+  (hasChoicePicked)="receiveChoicePicked($event)"
+></app-custom-menu>
 
 
 <div class="body mulish">

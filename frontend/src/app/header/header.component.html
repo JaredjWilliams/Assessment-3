@@ -4,6 +4,12 @@
       <div class="navbar-brand circle-background" routerLink="">
         <img src="assets/logo.png" alt="logo" class="logo cursor-pointer">
       </div>
+
+      <button class="secondary-background icon-button" *ngIf="isScreenSmallInput" (click)="toggleMenu()">
+        <mat-icon class="fas fa-bars fa-icon"></mat-icon>
+      </button>
+
+      <ng-container *ngIf="!isScreenSmallInput">
       <ul class="navbar-nav" *ngIf="isAdmin$ | async">
         <li class="acting-as-admin p-2">ACTING AS ADMIN</li>
       </ul>
@@ -21,6 +27,7 @@
       <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="!(loggedIn$ | async)">
         <li class="heading-color p-2 onHover" routerLink="/login">Log In</li>
       </ul>
+      </ng-container>
 
     </nav>
   </header>

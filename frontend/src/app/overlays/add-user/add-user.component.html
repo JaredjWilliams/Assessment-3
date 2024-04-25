@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            
+
             <div class="pt-3 pl-2 half-text-container">
                 <div>
                     <h5>last name</h5>
@@ -67,7 +67,13 @@
 
         <h3 class="pt-5">Make user an admin role?</h3>
 
-        <app-drop-down [items]="['true', 'false']" [forAdminStatus]="true" class="pt-3 pb-1" [(ngModel)]="adminStatus"></app-drop-down>
+        <app-drop-down
+          [items]="['true', 'false']"
+          [forAdminStatus]="true"
+          class="pt-3 pb-1"
+          (statusSelected)="receiveAdminStatus($event)">
+
+        </app-drop-down>
     </div>
     <div>
         <button class="project-button mb-5" (click)="submit()">Submit</button>

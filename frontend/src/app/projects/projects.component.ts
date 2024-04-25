@@ -70,8 +70,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   openDialog(project: Project | null) {
-    this.matDialog.open(CreateProjectComponent, this.composeDialogConfig())
+    this.matDialog.open(CreateProjectComponent, this.composeDialogConfig(project))
       .afterClosed().subscribe((result : DialogCloseResult) => {
+        console.log(result);
         return this.onClose(result);
     })
   }
@@ -95,7 +96,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateProject(project: Project): void {
-    this.service.updateProject(this.team.id, project).subscribe({
+    this.service.updateProject(this.team.id, project.id!, project).subscribe({
       next: (project: Project) => {
         this.loadProjectsByTeamId(this.team.id);
       },

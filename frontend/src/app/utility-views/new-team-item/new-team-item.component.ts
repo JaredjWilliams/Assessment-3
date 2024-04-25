@@ -4,6 +4,7 @@ import {CreateTeamComponent} from "../../overlays/create-team/create-team.compon
 import Team from "../../models/Team";
 import UserInfo from "../../models/UserInfo";
 
+
 @Component({
   selector: 'app-new-team-item',
   templateUrl: './new-team-item.component.html',
